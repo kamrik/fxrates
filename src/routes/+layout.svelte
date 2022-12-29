@@ -6,8 +6,8 @@
 <nav class="container">
 	<ul><li><strong>Logo</strong></li></ul>
 	<ul>
-		<li><a href="/">Item 1</a></li>
-		<li><a href="pico">Pico</a></li>
+		<li><a href="/">Home</a></li>
+		<li><a href="/pico">Pico</a></li>
 	</ul>
 </nav>
 <slot />

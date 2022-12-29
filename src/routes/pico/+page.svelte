@@ -32,7 +32,8 @@
 				<fieldset>
 					<label for="terms">
 						<input type="checkbox" role="switch" id="terms" name="terms" />
-						I agree to the <a href="#" onclick="event.preventDefault()">Privacy Policy</a>
+						I agree to the
+						<a href="/" on:click={(event) => event.preventDefault()}>Privacy Policy</a>
 					</label>
 				</fieldset>
 			</form>
@@ -68,9 +69,16 @@
 			<!-- Inline text elements-->
 			<h3>Inline text elements</h3>
 			<div class="grid">
-				<p><a href="#" onclick="event.preventDefault()">Primary link</a></p>
-				<p><a href="#" class="secondary" onclick="event.preventDefault()">Secondary link</a></p>
-				<p><a href="#" class="contrast" onclick="event.preventDefault()">Contrast link</a></p>
+				<p><a href="#" on:click={(event) => event.preventDefault()}>Primary link</a></p>
+				<p>
+					<a href="#" class="secondary" on:click={(event) => event.preventDefault()}
+						>Secondary link</a
+					>
+				</p>
+				<p>
+					<a href="#" class="contrast" on:click={(event) => event.preventDefault()}>Contrast link</a
+					>
+				</p>
 			</div>
 			<div class="grid">
 				<p><strong>Bold</strong></p>
@@ -121,10 +129,7 @@
 
 			<!-- Medias-->
 			<figure>
-				<img
-					src="assets/aleksandar-jason-a562ZEFKW8I-unsplash-2000x1000.jpg"
-					alt="Minimal landscape"
-				/>
+				<img src="/favicon.png" alt="Minimal landscape" />
 				<figcaption>
 					Image from
 					<a href="https://unsplash.com/photos/a562ZEFKW8I" target="_blank"> unsplash.com </a>
@@ -329,7 +334,13 @@
 		<!-- Modal -->
 		<section id="modal">
 			<h2>Modal</h2>
-			<button class="contrast" data-target="modal-example" on:click={toggleModal}>
+			<button
+				class="contrast"
+				data-target="modal-example"
+				on:click={() => {
+					console.log('Close modal');
+				}}
+			>
 				Launch demo modal
 			</button>
 		</section>
