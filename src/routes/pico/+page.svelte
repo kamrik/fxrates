@@ -1,4 +1,7 @@
 <script lang="ts">
+	function preventDefault(event: MouseEvent) {
+		event.preventDefault();
+	}
 </script>
 
 <main>
@@ -69,14 +72,14 @@
 			<!-- Inline text elements-->
 			<h3>Inline text elements</h3>
 			<div class="grid">
-				<p><a href="#" on:click={(event) => event.preventDefault()}>Primary link</a></p>
+				<p><a href="/" on:click={(event) => event.preventDefault()}>Primary link</a></p>
 				<p>
-					<a href="#" class="secondary" on:click={(event) => event.preventDefault()}
+					<a href="/" class="secondary" on:click={(event) => event.preventDefault()}
 						>Secondary link</a
 					>
 				</p>
 				<p>
-					<a href="#" class="contrast" on:click={(event) => event.preventDefault()}>Contrast link</a
+					<a href="/" class="contrast" on:click={(event) => event.preventDefault()}>Contrast link</a
 					>
 				</p>
 			</div>
@@ -132,7 +135,13 @@
 				<img src="/favicon.png" alt="Minimal landscape" />
 				<figcaption>
 					Image from
-					<a href="https://unsplash.com/photos/a562ZEFKW8I" target="_blank"> unsplash.com </a>
+					<a
+						href="https://unsplash.com/photos/a562ZEFKW8I"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						unsplash.com
+					</a>
 				</figcaption>
 			</figure>
 		</section>
@@ -271,8 +280,8 @@
 				</div>
 
 				<!-- Buttons -->
-				<input type="reset" value="Reset" onclick="event.preventDefault()" />
-				<input type="submit" value="Submit" onclick="event.preventDefault()" />
+				<input type="reset" value="Reset" on:click={preventDefault} />
+				<input type="submit" value="Submit" on:click={preventDefault} />
 			</form>
 		</section>
 		<!-- ./ Form elements-->
@@ -422,8 +431,8 @@
 				aria-label="Close"
 				class="close"
 				data-target="modal-example"
-				onclick="toggleModal(event)"
-			/>
+				on:click={preventDefault}>x</a
+			>
 			<h3>Confirm your action!</h3>
 			<p>
 				Cras sit amet maximus risus. Pellentesque sodales odio sit amet augue finibus pellentesque.
@@ -435,8 +444,9 @@
 					role="button"
 					class="secondary"
 					data-target="modal-example"
-					onclick="toggleModal(event)">Cancel</a
-				><a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)"
+					on:click={preventDefault}>Cancel</a
+				>
+				<a href="#confirm" role="button" data-target="modal-example" on:click={preventDefault}
 					>Confirm</a
 				>
 			</footer>
