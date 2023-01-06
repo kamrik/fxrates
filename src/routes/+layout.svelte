@@ -1,18 +1,31 @@
 <script lang="ts">
 	import '@picocss/pico';
 	import '../app.css';
+	import Icon from '@iconify/svelte';
 </script>
 
-<nav class="container">
-	<ul><li><strong>Logo</strong></li></ul>
-	<ul>
-		<li><a href="/">Home</a></li>
-		<li><a href="/pico">Pico</a></li>
-	</ul>
-</nav>
+<!-- <header>
+	<nav class="container-fluid">
+		<ul><li><strong><Icon icon="mdi:home" /></strong></li></ul>
+		<ul>
+			<li><strong>Currency calculator</strong></li>
+		</ul>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/pico">Pico</a></li>
+		</ul>
+	</nav>
+</header> -->
+
 <slot />
 
 <footer class="container">
 	<hr />
-	<p>Footer be here</p>
+	<p>Experimental code, do not rely on this data!</p>
 </footer>
+
+<style>
+	nav {
+		background-color: var(--background-color);
+	}
+</style>

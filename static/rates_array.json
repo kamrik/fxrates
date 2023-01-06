@@ -1,0 +1,14 @@
+[
+    {
+        "symbol": "USD",
+        "rate": 1
+    },
+    {
+        "symbol": "AMD",
+        "rate": 390
+    },
+    {
+        "symbol": "RUB",
+        "rate": 73
+    }
+]
