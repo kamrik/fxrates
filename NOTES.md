@@ -9,6 +9,5 @@ http://www.floatrates.com/daily/usd.json
 
 # Names
 
-rublify
 xyzabc.info
 fxrates.info / fxrates.online / fxrates.me

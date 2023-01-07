@@ -4,7 +4,7 @@ import { browser } from '$app/environment';
 
 
 const KEY_NAME ='quickAccess'
-let init = ['EUR', 'GBP', 'USD'];
+let init = ["AMD", "EUR", "GEL", "ILS", "RUB", "TRY", "USD"].sort();
 
 
 export const quickAccess = writable(init);

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { quickAccess } from './stores';
+	import Icon from '@iconify/svelte';
 
 	let loading = true;
 	let rateMap = new Map();
@@ -73,6 +74,9 @@
 	}
 
 	function addQA() {
+		if (symbolQA === '') {
+			return;
+		}
 		let qa = $quickAccess.splice(0);
 		qa.push(symbolQA);
 		qa.sort();
@@ -92,10 +96,10 @@
 	{:else}
 		<article>
 			<header>
-				<h3>FX Rates</h3>
+				<h3>Exchange Rates</h3>
 			</header>
 
-			<div class="amount-box">
+			<div class="input-and-button">
 				<input title="Amount" role="textbox" type="number" bind:value={amount1} />
 
 				<button on:click={swap}>
@@ -147,19 +151,26 @@
 			<header>
 				<h3>Quick access list</h3>
 			</header>
-			<select id="curQAselect" name="curQA" bind:value={symbolQA}>
-				<option value="" disabled selected>Add currencies to quick access</option>
-				{#each arrayMinus(symbols, $quickAccess) as symbol}
-					<option value={symbol}>{symbol} - {rateMap.get(symbol).name}</option>
-				{/each}
-			</select>
-			<button on:click={addQA}>Add</button>
+			<p>
+				Manage your quick access list (currencies shown at the top). This list is saved across
+				browser sessions.
+			</p>
+			<div class="input-and-button">
+				<select id="curQAselect" name="curQA" bind:value={symbolQA}>
+					<option value="" disabled selected>Add a currency to quick access</option>
+					{#each arrayMinus(symbols, $quickAccess) as symbol}
+						<option value={symbol}>{symbol} - {rateMap.get(symbol).name}</option>
+					{/each}
+				</select>
+				<button class="btn-add" on:click={addQA}>Add</button>
+			</div>
 			<div class="quickaccess">
-				{#each $quickAccess as symbol}
+				{#each $quickAccess as symbol (symbol)}
 					<button
+						title="Remove from quick access"
 						on:click={() => {
 							quickAccess.set($quickAccess.filter((x) => x !== symbol));
-						}}>Remove</button
+						}}>&#10005;</button
 					>
 					<span>{symbol} - {rateMap.get(symbol).name}</span>
 				{/each}
@@ -195,18 +206,13 @@
 		grid-column-gap: calc(var(--block-spacing-horizontal) * 3);
 		align-items: center;
 	} */
-	.amount-box {
+	.input-and-button {
 		display: flex;
 	}
 
-	/* input {
-		flex-grow: 1;
-	} */
-	button {
-		width: 6em;
-		/* aspect-ratio: 1; */
+	.input-and-button > button {
 		margin-left: 1em;
-		/* padding: 0; */
+		width: 6em;
 	}
 
 	.small-rates {
@@ -216,6 +222,22 @@
 
 	.quickaccess {
 		display: grid;
-		grid-template-columns: 10em auto;
+		gap: 1em;
+		grid-template-columns: 1.2em auto;
+		align-items: center;
+	}
+
+	.quickaccess > button {
+		display: inline;
+		margin: 0;
+		padding: 0;
+		width: 1.5em;
+		height: 1.5em;
+		color: red;
+		border: none;
+		background-color: white;
+		/*
+		border-color: black;
+		border-radius: 1em; */
 	}
 </style>

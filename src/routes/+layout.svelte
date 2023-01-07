@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '@picocss/pico';
 	import '../app.css';
-	import Icon from '@iconify/svelte';
 </script>
 
 <!-- <header>
