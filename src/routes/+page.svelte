@@ -2,6 +2,13 @@
 	import { onMount } from 'svelte';
 	import { quickAccess } from './stores';
 	import Icon from '@iconify/svelte';
+	import { dev } from '$app/environment';
+
+	//// Data source: https://www.floatrates.com/json-feeds.html
+	let dataURL = 'http://www.floatrates.com/daily/usd.json';
+	if (dev) {
+		dataURL = '/rates.json';
+	}
 
 	let loading = true;
 	let rateMap = new Map();
@@ -19,10 +26,7 @@
 	$: amount2 = convert(amount1, symbol1, symbol2);
 
 	onMount(async () => {
-		const url = '/rates.json';
-		//// see https://www.floatrates.com/json-feeds.html
-		// const url = 'http://www.floatrates.com/daily/usd.json';
-		const res = await fetch(url);
+		const res = await fetch(dataURL);
 		rates = await res.json();
 		rates.usd = { code: 'USD', rate: 1, inverseRate: 1, name: 'US Dollar' };
 		rateMap = new Map();
