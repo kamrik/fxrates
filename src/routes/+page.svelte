@@ -5,7 +5,7 @@
 	import { dev } from '$app/environment';
 
 	//// Data source: https://www.floatrates.com/json-feeds.html
-	let dataURL = 'http://www.floatrates.com/daily/usd.json';
+	let dataURL = 'https://www.floatrates.com/daily/usd.json';
 	if (dev) {
 		dataURL = '/rates.json';
 	}
