@@ -1,3 +1,11 @@
+# TODO
+
+- SSR version with json updated once a day
+- Say when data was last updated
+- Pico CSS built in with customizations
+- Add Crypto rates
+- Allow linking to specific pairs
+
 # UI examples
 
 - https://www.xe.com/currencyconverter/

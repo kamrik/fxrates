@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '@picocss/pico';
-	import '../app.css';
 </script>
 
 <!-- <header>
@@ -23,8 +22,8 @@
 	<p>Experimental code, do not rely on this data!</p>
 </footer>
 
-<style>
+<!-- <style>
 	nav {
 		background-color: var(--background-color);
 	}
-</style>
+</style> -->

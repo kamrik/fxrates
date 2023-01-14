@@ -180,22 +180,22 @@
 				{/each}
 			</div>
 		</article>
-	{/if}
 
-	<!-- Raw data -->
-	<article>
-		<header>
-			<h3>Raw data</h3>
-		</header>
-		<details>
-			<summary>JSON</summary>
-			<pre>{JSON.stringify(rates, null, '    ')}</pre>
-		</details>
-	</article>
+		<!-- Raw data -->
+		<article>
+			<header>
+				<h3>Raw data</h3>
+			</header>
+			<details>
+				<summary>JSON</summary>
+				<pre>{JSON.stringify(rates, null, '    ')}</pre>
+			</details>
+		</article>
+	{/if}
 </main>
 
 <!-- ### Style ########### -->
-<style>
+<style lang="scss">
 	main {
 		/* For alternating dark and light blocks */
 		background-color: var(--background-color);
