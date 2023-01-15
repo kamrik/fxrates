@@ -23,7 +23,9 @@
 
 	let symbolQA = '';
 
-	$: amount2 = convert(amount1, symbol1, symbol2);
+	let symbolBase = 'USD';
+
+	$: amount2 = convert(amount1, symbol1, symbol2, true);
 
 	onMount(async () => {
 		const res = await fetch(dataURL);
@@ -51,12 +53,14 @@
 		symbol1 = symTmp;
 	}
 
-	function convert(amount: number, fromSymbol: string, toSymbol: string) {
+	function convert(amount: number, fromSymbol: string, toSymbol: string, save = false) {
 		if (loading) return NaN;
 
 		// Save to localStorage
-		localStorage.setItem('symbol1', symbol1);
-		localStorage.setItem('symbol2', symbol2);
+		if (save) {
+			localStorage.setItem('symbol1', symbol1);
+			localStorage.setItem('symbol2', symbol2);
+		}
 
 		const fromRate = rateMap.get(fromSymbol)?.rate;
 		const toRate = rateMap.get(toSymbol)?.rate;
@@ -176,7 +180,11 @@
 							quickAccess.set($quickAccess.filter((x) => x !== symbol));
 						}}>&#10005;</button
 					>
-					<span>{symbol} - {rateMap.get(symbol).name}</span>
+
+					<span><b>{symbol}</b></span>
+					<span>{rateMap.get(symbol).name}</span>
+					<span>{convert(1, symbolBase, symbol)}</span>
+					<span>{convert(1, symbol, symbolBase)}</span>
 				{/each}
 			</div>
 		</article>
@@ -227,7 +235,7 @@
 	.quickaccess {
 		display: grid;
 		gap: 1em;
-		grid-template-columns: 1.2em auto;
+		grid-template-columns: 1em 2.5em minmax(0, 2fr) minmax(0, 8ch) minmax(0, 8ch);
 		align-items: center;
 	}
 

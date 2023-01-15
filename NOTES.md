@@ -1,10 +1,13 @@
 # TODO
 
-- SSR version with json updated once a day
+- Add raete in quick access list
 - Say when data was last updated
-- Pico CSS built in with customizations
 - Add Crypto rates
 - Allow linking to specific pairs
+
+# Maybe TODO
+
+- SSR version with json updated once a day
 
 # UI examples
 
