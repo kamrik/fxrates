@@ -100,7 +100,10 @@
 
 <main class="container">
 	{#if loading}
-		<span aria-busy="true" />
+		<div class="loading">
+			<h2>Loading...</h2>
+			<div aria-busy="true" />
+		</div>
 	{:else}
 		<article>
 			<header>
@@ -251,5 +254,12 @@
 		/*
 		border-color: black;
 		border-radius: 1em; */
+	}
+
+	.loading {
+		text-align: center;
+		h2 {
+			margin: 1rem auto;
+		}
 	}
 </style>
